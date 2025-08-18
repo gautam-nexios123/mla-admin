@@ -1,0 +1,26 @@
+const locale = {
+	APPLICATIONS: 'Applications',
+	EXAMPLE: 'Example',
+	STOCK: 'Stock',
+	INSTOCK: 'Inventory in stock',
+	SOLDSTOCK: 'Inventory SOLD completed',
+	SOLDSTOCKPENDING: 'Inventory Sold Pending',
+	PRICEFINDER: 'Price Finder',
+	STOCKREPLACEMENT: 'Stock replacement',
+	BOXINVENTORY: 'Box inventory',
+	WISHLIST: 'Wish list',
+	CREATEPACKAGE: 'Create package',
+	ORDER: 'Order',
+	CUSTOMER: 'Customers',
+	STAFF: 'Staff',
+	ANALYSIS: 'Analysis',
+	STATISTIC: 'Statistic',
+	LOGFILE: 'Log file',
+	SETTING: 'Setting',
+	HISTORYPACKAGE: 'Package history',
+	SHAREINVENTORY: 'Sale/Share inventory',
+	RETAILINVENTORY: 'Retail inventory',
+	SHIPPINGPACKAGE: 'Shipping Package',
+};
+
+export default locale;
