@@ -27,11 +27,12 @@ export default defineConfig({
     },
   ],
   build: {
-    outDir: "dist",
+    outDir: "build",
   },
   server: {
     open: true,
     port: 3000,
+    // host: "192.168.29.8",
   },
   define: {
     global: "window",
