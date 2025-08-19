@@ -1390,7 +1390,7 @@ export default function StocksProTable(props) {
             );
             newRow.shipping_fee_one = calShiiping?.shipping_fee;
 
-            if (newRow.column_r_min_price > (cost * 0.87)) {
+            if (newRow.manualmin_price <= 0 && newRow.column_r_min_price > (cost * 0.87)) {
               newRow.minimum_wholesale_price_usd = newRow.column_r_min_price;
             } else {
               newRow.minimum_wholesale_price_usd =
