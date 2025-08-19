@@ -1357,7 +1357,6 @@ export default function StocksProTable(props) {
           //   newRow.column_s_wholesale_price,
           //   newRow.watch_box,
           // ));
-
           newRow.column_r_min_price = roundValue(
             calculateR_MinPrice(
               newRow.manualmin_price,
@@ -1367,7 +1366,39 @@ export default function StocksProTable(props) {
               newRow.extra_300_for_rx_where_wholesale_price_20
             )
           );
-          newRow.minimum_wholesale_price_usd = newRow.column_r_min_price;
+
+          const findUSWatchPrice = user?.pricingBaseRule?.find(
+            (item) => item?.watchLocation == "US"
+          );
+
+          if (
+            newRow.location?.toLowerCase() == "ny" ||
+            newRow.location?.toLowerCase() == "t/ny" ||
+            newRow.location?.toLowerCase() == "r/ny" ||
+            newRow.location?.toLowerCase() == "la"
+          ) {
+            const calShiiping = countShippingFeeAndNetCostUsd(
+              newRow?.location,
+              newRow?.suggested_wholesale_price_usd_only_mla === 0
+                ? newRow?.cost_usd
+                : newRow?.suggested_wholesale_price_usd_only_mla,
+              newRow?.purchase_date,
+              newRow?.watch_from,
+              user,
+              newRow?.new_type,
+              Number(newRow?.extra_300_for_rx_where_wholesale_price_20)
+            );
+            newRow.shipping_fee_one = calShiiping?.shipping_fee;
+
+            if (newRow.column_r_min_price > (cost * 0.87)) {
+              newRow.minimum_wholesale_price_usd = newRow.column_r_min_price;
+            } else {
+              newRow.minimum_wholesale_price_usd =
+                newRow.column_r_min_price + newRow.shipping_fee_one;
+            }
+          } else {
+            newRow.minimum_wholesale_price_usd = newRow.column_r_min_price;
+          }
 
           // if (currentData.ch24_usd_6 != newRow.ch24_usd_6 && (newRow.ch24_usd_6 )) {
 
@@ -1485,8 +1516,10 @@ export default function StocksProTable(props) {
         newRow.product_type == "WATCH (Old Stock)" ||
         newRow.product_type == "WATCH (Old Stock/Vintage)"
       ) {
-        
-        if (clickedField !== "manual_max_price") {
+        if (
+          clickedField !== "manual_max_price" &&
+          clickedField !== "manual_final_w_sale_max_price"
+        ) {
           if (Number(newRow.manual_max_price) == 0) {
             newRow.manual_max_price =
               newRow?.final_w_sale_max_price_rounded || 0;
@@ -1575,6 +1608,51 @@ export default function StocksProTable(props) {
               ) * 50;
           }
         }
+
+        // if (
+        //   newRow.new_type === "PRE OWNED" ||
+        //   (newRow.new_type === "NEW" && newRow.watch_from === "JAPAN") ||
+        //   (newRow.new_type === "NEW" &&
+        //     newRow.watch_from === "NYC" &&
+        //     newRow.auct === "NYC") ||
+        //   (newRow.new_type === "NEW" && newRow.watch_from === "SD")
+        // ) {
+        //   if (
+        //     newRow.location?.toLowerCase() == "ny" ||
+        //     newRow.location?.toLowerCase() == "t/ny" ||
+        //     newRow.location?.toLowerCase() == "r/ny" ||
+        //     newRow.location?.toLowerCase() == "la"
+        //   ) {
+        //     // let column_r_min_price_new = 0;
+        //     if (
+        //       Number(newRow.manualmin_price) > 0 ||
+        //       Number(newRow.minimum_wholesale_price_usd_only_mla) > 0
+        //     ) {
+        //       const column_r_min_price_new = roundValue(
+        //         calculateR_MinPrice(
+        //           newRow.manualmin_price,
+        //           newRow.minimum_wholesale_price_usd_only_mla,
+        //           cost,
+        //           newRow.total_amount_decreased_from_wholesale_price,
+        //           newRow.extra_300_for_rx_where_wholesale_price_20
+        //         )
+        //       );
+
+        //       const findUSWatchPrice = user?.pricingBaseRule?.find(
+        //         (item) => item?.watchLocation == "US"
+        //       );
+
+        //       newRow.minimum_wholesale_price_usd =
+        //         column_r_min_price_new +
+        //         column_r_min_price_new *
+        //           (findUSWatchPrice?.basePriceModifier / 100);
+        //     }
+
+        //     // else {
+        //     //   column_r_min_price_new = newRow.minimum_wholesale_price_usd;
+        //     // }
+        //   }
+        // }
       }
     }
 
