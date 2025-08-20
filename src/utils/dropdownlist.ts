@@ -6,6 +6,7 @@ export const collectionDropdown = [
   "Aquatimer",
   "Assioma",
   "Avenger",
+  "Arkade",
   "B.zero1",
   "Balancier Contemporain",
   "Ballon Bleu",
@@ -120,6 +121,7 @@ export const collectionDropdown = [
   "Royal Oak Concept",
   "Royal Oak Offshore",
   "Royal Oak Perpetual",
+  "[Re]Master",
   "Santos",
   "Saxonia",
   "Sea-Dweller",
@@ -143,6 +145,7 @@ export const collectionDropdown = [
   "TUDOR Royal",
   "Twenty~4",
   "Type XX - XXI - XXII",
+  "Tubogas",
   "Velvet",
   "Villeret",
   "Vintage",
@@ -404,6 +407,7 @@ export const dialDropdown = [
   "PAVE DIAMOND ROMAN",
   "MALACHITE “VI&IX” DIAMOND",
   "LAVENDER DIAMOND",
+  "LAVENDER",
 ].sort((a, b) => a.localeCompare(b));
 
 export const boxDropdown = [
@@ -452,6 +456,7 @@ export const strapDropdown = [
   "GREEN RUBBER",
   "GREY CROCODILE",
   "GREY RUBBER",
+  "GREEN FABRIC",
   "JUBILEE",
   "LEOPARD",
   "LIGHT BROWN RUBBER",
@@ -479,6 +484,7 @@ export const strapDropdown = [
   "TITANIUM",
   "TURQUOISE CROCODILE",
   "TITANIUM/PLATINUM",
+  "TURQUOISE LIZARD LEATHER",
   "WHITE CROCODILE",
   "WHITE GOLD",
   "WHITE RUBBER",
@@ -486,6 +492,8 @@ export const strapDropdown = [
   "YELLOW GOLD",
   "YELLOW GOLD/STEEL",
   "YELLOW RUBBER",
+  "YELLOW GOLD/ROSE GOLD/WHITE GOLD",
+  "YELLOW LIZARD LEATHER",
 ].sort((a, b) => a.localeCompare(b));
 
 export const conditionDropdown = [

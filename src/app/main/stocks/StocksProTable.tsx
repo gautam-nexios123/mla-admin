@@ -36,6 +36,7 @@ import { useSelector } from "react-redux";
 import { selectUser, selectUserRole } from "src/app/auth/user/store/userSlice";
 import {
   OFFICE_LOC,
+  WATCH_LOACTION,
   brandNameMap,
   calculateCAExtra,
   calculateCH24Usd_6,
@@ -1218,7 +1219,33 @@ export default function StocksProTable(props) {
             const addExtra =
               Number(newRow?.extra_300_for_rx_where_wholesale_price_20) ?? 0;
 
-            const cost_usd_90_per = Number(newRow?.cost_usd) * 0.9;
+            const findUSWatchPrice = user?.pricingBaseRule?.find(
+              (item) => item?.watchLocation == "US"
+            )?.basePriceModifier;
+
+            const findZHWatchPrice = user?.pricingBaseRule?.find(
+              (item) => item?.watchLocation == "ZH"
+            )?.basePriceModifier;
+
+            const findThilandWatchPrice = user?.pricingBaseRule?.find(
+              (item) => item?.watchLocation == "TH"
+            )?.basePriceModifier;
+
+            let perCount = 1;
+
+            if (WATCH_LOACTION[newRow?.location] === "US") {
+              perCount = (90 - findUSWatchPrice) / 100;
+            } else if (WATCH_LOACTION[newRow?.location] === "ZH") {
+              perCount = (90 - findZHWatchPrice) / 100;
+            } else if (WATCH_LOACTION[newRow?.location] === "HK") {
+              perCount = (90 - 0) / 100;
+            } else if (WATCH_LOACTION[newRow?.location] === "TH") {
+              perCount = (90 - findThilandWatchPrice) / 100;
+            } else {
+              perCount = 0.9;
+            }
+
+            const cost_usd_90_per = Number(newRow?.cost_usd) * perCount;
 
             findMax = Math.max(
               findMax - total_amount_decreased_from_wholesale_price,
