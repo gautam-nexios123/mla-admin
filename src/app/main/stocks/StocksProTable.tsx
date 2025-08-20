@@ -1018,7 +1018,7 @@ export default function StocksProTable(props) {
             newRow.column_r_min_price = 0;
             newRow.range = 0;
             newRow.column_s_wholesale_price = 0;
-            newRow.manual_max_price = 0;
+            // newRow.manual_max_price = 0;
             newRow.total_amount_decreased_from_wholesale_price = 0;
             newRow.w_s_price_decrease_every_n_days_starting_from_day_50 = 0;
 
@@ -1233,13 +1233,13 @@ export default function StocksProTable(props) {
 
             let perCount = 1;
 
-            if (WATCH_LOACTION[newRow?.location] === "US") {
+            if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "US") {
               perCount = (90 - findUSWatchPrice) / 100;
-            } else if (WATCH_LOACTION[newRow?.location] === "ZH") {
+            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "ZH") {
               perCount = (90 - findZHWatchPrice) / 100;
-            } else if (WATCH_LOACTION[newRow?.location] === "HK") {
+            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "HK") {
               perCount = (90 - 0) / 100;
-            } else if (WATCH_LOACTION[newRow?.location] === "TH") {
+            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "TH") {
               perCount = (90 - findThilandWatchPrice) / 100;
             } else {
               perCount = 0.9;
