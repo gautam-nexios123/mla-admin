@@ -1108,7 +1108,9 @@ export const columns: any = [
             ? "S"
             : params.value === "NEW"
               ? "N"
-              : ""}
+              : params.value === "PBB"
+                ? "PBB"
+                : ""}
       </div>
     ),
   },

@@ -36,7 +36,6 @@ import { useSelector } from "react-redux";
 import { selectUser, selectUserRole } from "src/app/auth/user/store/userSlice";
 import {
   OFFICE_LOC,
-  WATCH_LOACTION,
   brandNameMap,
   calculateCAExtra,
   calculateCH24Usd_6,

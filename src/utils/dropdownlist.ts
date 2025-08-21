@@ -615,7 +615,7 @@ export const productTypeDropdown = [
   "WATCH (Vintage)",
   "BAG",
 ]; // C , A , B
-export const newDropdown = ["Blank", "PRE OWNED", "NEW", "NEW SPECIAL"]; //P , N , S
+export const newDropdown = ["Blank", "PRE OWNED", "NEW", "NEW SPECIAL", "PBB"]; //P , N , S
 
 export const nyDropdown = ["Blank", "N", "Y"];
 export const naDropdown = ["Blank", "N/A", "Y"];
