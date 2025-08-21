@@ -36,6 +36,7 @@ import { useSelector } from "react-redux";
 import { selectUser, selectUserRole } from "src/app/auth/user/store/userSlice";
 import {
   OFFICE_LOC,
+  WATCH_LOACTION,
   brandNameMap,
   calculateCAExtra,
   calculateCH24Usd_6,
@@ -789,7 +790,7 @@ export default function StocksProTable(props) {
         //     // }
         //     UpdateRowFun(ITEM);
         //   }
-        //  }
+        // }
 
         setLoading(false);
       } else if (data.statusCode == 403) {
@@ -1233,15 +1234,21 @@ export default function StocksProTable(props) {
             let perCount = 1;
 
             if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "US") {
-              perCount = (90 - findUSWatchPrice) / 100;
-            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "ZH") {
-              perCount = (90 - findZHWatchPrice) / 100;
-            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "HK") {
-              perCount = (90 - 0) / 100;
-            } else if (WATCH_LOACTION[newRow?.location?.toLowerCase()] === "TH") {
-              perCount = (90 - findThilandWatchPrice) / 100;
+              perCount = (95 - findUSWatchPrice) / 100;
+            } else if (
+              WATCH_LOACTION[newRow?.location?.toLowerCase()] === "ZH"
+            ) {
+              perCount = (95 - findZHWatchPrice) / 100;
+            } else if (
+              WATCH_LOACTION[newRow?.location?.toLowerCase()] === "HK"
+            ) {
+              perCount = (95 - 0) / 100;
+            } else if (
+              WATCH_LOACTION[newRow?.location?.toLowerCase()] === "TH"
+            ) {
+              perCount = (95 - findThilandWatchPrice) / 100;
             } else {
-              perCount = 0.9;
+              perCount = 0.95;
             }
 
             const cost_usd_90_per = Number(newRow?.cost_usd) * perCount;
