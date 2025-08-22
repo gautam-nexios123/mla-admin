@@ -1242,7 +1242,7 @@ export default function StocksProTable(props) {
             } else if (
               WATCH_LOACTION[newRow?.location?.toLowerCase()] === "HK"
             ) {
-              perCount = (95 - 0) / 100;
+              perCount = (90 - 0) / 100;
             } else if (
               WATCH_LOACTION[newRow?.location?.toLowerCase()] === "TH"
             ) {
@@ -1644,6 +1644,10 @@ export default function StocksProTable(props) {
               ) * 50;
           }
         }
+
+        newRow.retail_price_usd = roundValue(
+          calculateRetailPrice(newRow.final_w_sale_max_price_rounded)
+        );
 
         if (
           newRow.new_type === "PRE OWNED" ||
